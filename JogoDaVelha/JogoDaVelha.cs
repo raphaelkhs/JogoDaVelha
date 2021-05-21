@@ -23,8 +23,7 @@ namespace JogoDaVelha
         }
 
         private void JogoDaVelha_Load(object sender, EventArgs e)
-        {
-            
+        {            
         }
 
         public void NovoJogo()
@@ -71,7 +70,7 @@ namespace JogoDaVelha
                 caneta2.Dispose();
                 formGraphics2.Dispose();
             }
-
+            //troca de jogadores
             if (jogador)
             {
                 return false;
@@ -235,7 +234,7 @@ namespace JogoDaVelha
                 }
             }
             //diagonal 2
-            if ((posicao[0] == 1 && posicao[1] == 3) || (posicao[0] == 3 && posicao[1] == 1))
+            if ((posicao[0] == 1 && posicao[1] == 3) || (posicao[0] == 2 && posicao[1] == 2) || (posicao[0] == 3 && posicao[1] == 1))
             {
                 if (valor3.Equals(valor5) && valor5.Equals(valor7) && !String.IsNullOrEmpty(valor3))
                 {
@@ -261,17 +260,21 @@ namespace JogoDaVelha
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             int[] posicao = { 1, 1 };
-
+            //check se está vazio
             if (box1 == false)
             {
+                //verificação do jogaros
                 if (jogador)                
                     valor1 = "x";
                 
                 else                
                     valor1 = "o";
                 
+                //desenha e passa a vez do jogador
                 jogador = desenha(this.pictureBox1, jogador);
+                //marca o box como preenchido
                 box1 = true;
+                //checar por vencedor
                 checar(posicao);
             }            
         }
